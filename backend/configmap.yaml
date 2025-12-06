@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: app
+data:
+  DB_HOST: "postgres.db.svc.cluster.local"
+  DB_PORT: "5432"
+  DB_NAME: "mensagensdb"
+  API_HOST: "0.0.0.0"
+  API_PORT: "5000"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-db-secret
+  namespace: app
+type: Opaque
+stringData:
+  DB_USER: "postgres"
+  DB_PASSWORD: "postgres"
+
